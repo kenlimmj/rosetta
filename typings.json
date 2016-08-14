@@ -1,0 +1,6 @@
+{
+  "globalDependencies": {
+    "immutable": "registry:dt/immutable#3.8.1+20160608070634",
+    "require": "registry:dt/require#2.1.20+20160316155526"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "rosetta",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/main.js",
+  "dependencies": {
+    "immutable": "^3.8.1"
+  },
+  "directories": {
+    "lib": "./src",
+    "bin": "./dist"
+  },
+  "devDependencies": {
+    "@types/immutable": "^3.8.1",
+    "@types/requirejs": "^2.1.26",
+    "immutable": "^3.8.1"
+  },
+  "scripts": {
+    "postinstall": "typings install"
+  },
+  "author": "Lim Mingjie, Kenneth",
+  "license": "MIT"
+}
