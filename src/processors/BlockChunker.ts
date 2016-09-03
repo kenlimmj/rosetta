@@ -1,6 +1,6 @@
-import { CommonMarkConstants } from '../constants';
-import BlockNode from '../ast/BlockNode';
 import IProcessor from './IProcessor';
+
+import BlockNode from '../ast/BlockNode';
 import RawTextNode from '../ast/RawTextNode';
 
 /**
@@ -12,7 +12,7 @@ export default class BlockChunker implements IProcessor<RawTextNode, BlockNode> 
   // Paragraph breaks are defined by two or more consecutive EOLs.
   // The second EOL (and beyond) in the sequence can be preceded by any number of whitespace or tabs.
   // This matches any number of whitespace/tabs, followed by one or more EOLs.
-  private paragraphBreakRegex_: RegExp = new RegExp(`([ \t]*(${CommonMarkConstants.EOL.join('|')}))+`, 'g');
+  private paragraphBreakRegex_: RegExp = /([ \t]*(\r\n|\r|\n))+\g/;
 
   process(data: RawTextNode): BlockNode[] {
     return data.getContent().split(this.paragraphBreakRegex_).map(t => new BlockNode(t));

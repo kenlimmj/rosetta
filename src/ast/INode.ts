@@ -14,6 +14,8 @@ interface INode<T> {
 
   getChildren(): INode<any>[];
   setChildren(c: INode<any>[]): this;
+
+  equals(c: INode<any>): boolean;
 }
 
 export default INode;

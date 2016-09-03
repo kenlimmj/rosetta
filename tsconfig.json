@@ -22,7 +22,9 @@
         "sourceMap": true,
         "strictNullChecks": true,
         "suppressImplicitAnyIndexErrors": true,
-        "target": "es6"
+        "target": "es2015",
+        "outDir": "lib/",
+        "rootDir": "src/"
     },
     "exclude": [
         "node_modules",

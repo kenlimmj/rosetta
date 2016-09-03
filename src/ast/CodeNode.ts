@@ -1,19 +1,13 @@
 import ANode from './ANode';
 
 export enum BLOCK_TYPE {
-  Unknown,
-  Container,
-  Leaf
+  Indented,
+  Fenced
 }
 
-/**
- * A block of content in the document.
- *
- * @extends ANode
- */
-export default class BlockNode extends ANode<string> {
-  constructor(content: string, private blockType: BLOCK_TYPE = BLOCK_TYPE.Unknown,
-    opt_parent = null, opt_children = []) {
+export default class CodeNode extends ANode<string> {
+  constructor(content: string, private blockType: BLOCK_TYPE, opt_parent = null,
+    opt_children = []) {
     super(content, opt_parent, opt_children);
   }
 

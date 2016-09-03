@@ -2,22 +2,22 @@
   "name": "rosetta",
   "version": "1.0.0",
   "description": "",
+  "repository": "github/kenlimmj/rosetta",
   "main": "dist/main.js",
-  "dependencies": {
-    "immutable": "^3.8.1"
-  },
-  "directories": {
-    "lib": "./src",
-    "bin": "./dist"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@types/immutable": "^3.8.1",
-    "@types/requirejs": "^2.1.26",
-    "immutable": "^3.8.1"
+    "ava": "^0.16.0",
+    "ava-spec": "^1.0.1",
+    "tap-prettify": "0.0.2"
   },
   "scripts": {
-    "postinstall": "typings install"
+    "postinstall": "typings install",
+    "test": "ava --verbose"
   },
   "author": "Lim Mingjie, Kenneth",
-  "license": "MIT"
+  "license": "MIT",
+  "ava": {
+    "files": "lib/*/test/*Test.js",
+    "source": "src/*/*.js"
+  }
 }

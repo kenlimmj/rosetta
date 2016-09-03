@@ -2,6 +2,7 @@ import INode from './INode';
 
 /**
  * An abstract AST node that implements functions for a basic n-tree invariant.
+ * 
  * @implements INode
  */
 abstract class ANode<T> implements INode<T> {
@@ -40,7 +41,8 @@ abstract class ANode<T> implements INode<T> {
   }
 
   /**
-   * Sets the parent node for this node. Setting this value to {@code null} is equivalent to removing the parent.
+   * Sets the parent node for this node. Setting this value to {@code null} is equivalent to
+   * removing the parent.
    * @method setParent
    * @param  {INode<any> | null} p The parent node to be set.
    * @return {this} {@code this}, for chaining.
@@ -59,6 +61,19 @@ abstract class ANode<T> implements INode<T> {
   setChildren(c: INode<any>[]): this {
     this.children_ = c;
     return this;
+  }
+
+  equals(c: INode<any>): boolean {
+    const contentMatch = this.content_ === c.getContent();
+
+    let parentMatch: boolean;
+    if (c.getParent && this.parent_) {
+      parentMatch = this.parent_.equals(<INode<any>>c.getParent());
+    } else {
+      parentMatch = this.parent_ === c.getParent();
+    }
+
+    return contentMatch && parentMatch;
   }
 }
 
