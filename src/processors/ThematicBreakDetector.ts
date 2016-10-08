@@ -3,6 +3,13 @@ import IProcessor from './IProcessor';
 import BlockNode from '../ast/BlockNode';
 import ThematicBreakNode from '../ast/ThematicBreakNode';
 
+/**
+ * Detects thematic breaks.
+ *
+ * @export
+ * @class ThematicBreakDetector
+ * @implements {IProcessor<BlockNode, ThematicBreakNode>}
+ */
 export default class ThematicBreakDetector implements IProcessor<BlockNode, ThematicBreakNode> {
   process(node: BlockNode): ThematicBreakNode | null {
     const nodeContent = node.getContent();
@@ -19,9 +26,11 @@ export default class ThematicBreakDetector implements IProcessor<BlockNode, Them
 
       // To be a valid thematic break, there must be at least 3 occurrences
       // of the break character, and no other types of characters.
-      return tokens.every(t => t === breakChar) && tokens.length >= 3 ? new ThematicBreakNode(<string>breakChar) : null;
-    } else {
-      return null;
+      if (tokens.every(t => t === breakChar) && tokens.length >= 3) {
+        return new ThematicBreakNode(<string>breakChar)
+      }
     }
+
+    return null;
   }
 }
