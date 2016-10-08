@@ -1,4 +1,4 @@
-import INode from '../ast/INode';
+import INode from './INode';
 
 /**
  * The interface for all processors in the pipeline.

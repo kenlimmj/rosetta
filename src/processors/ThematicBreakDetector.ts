@@ -1,4 +1,4 @@
-import IProcessor from './IProcessor';
+import IProcessor from '../interfaces/IProcessor';
 
 import BlockNode from '../ast/BlockNode';
 import ThematicBreakNode from '../ast/ThematicBreakNode';

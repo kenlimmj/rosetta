@@ -1,4 +1,4 @@
-import INode from './INode';
+import INode from '../interfaces/INode';
 
 /**
  * An abstract AST node that implements functions for a basic n-tree invariant.

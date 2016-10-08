@@ -1,4 +1,4 @@
-import IProcessor from './IProcessor';
+import IProcessor from '../interfaces/IProcessor';
 
 import BlockNode, { BLOCK_TYPE } from '../ast/BlockNode';
 import RawTextNode from '../ast/RawTextNode';

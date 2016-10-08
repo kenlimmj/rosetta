@@ -1,4 +1,4 @@
-import IProcessor from './IProcessor';
+import IProcessor from '../interfaces/IProcessor';
 import RawTextNode from '../ast/RawTextNode';
 
 /**
