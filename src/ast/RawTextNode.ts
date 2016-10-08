@@ -10,7 +10,7 @@ import DocumentRootNode from './DocumentRootNode';
  * @extends ANode
  */
 export default class RawTextNode extends ANode<string> {
-  constructor(content: string, opt_parent: DocumentRootNode | null = null) {
-    super(content, opt_parent, []);
+  constructor(content: string, parent?: DocumentRootNode) {
+    super(content, parent, []);
   }
 }
