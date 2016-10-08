@@ -17,19 +17,20 @@ export default class ATXHeadingDetector implements IProcessor<BlockNode, Heading
     const nodeContent = node.getContent();
     if (!this.containsATXHeadingAndTrailingSpace(nodeContent)) {
       if (nodeContent === this.generateATXHeadingFromLevel(nodeContent.length)) {
-        // If the content is solely comprised of an ATX heading and nothing else,
-        // it can still be a valid but empty heading node.
+        // If the content is solely comprised of an ATX heading and nothing
+        // else, it can still be a valid but empty heading node.
         return new HeadingNode('', nodeContent.length);
       }
     } else {
       const openMatch = this.openSeqRegex.exec(nodeContent);
       if (openMatch) {
         // Extract the content that comes after the opening ATX heading.
-        const restContent = nodeContent.substring(openMatch.index + openMatch[0].length);
+        const restContent = nodeContent.substring(
+          openMatch.index + openMatch[0].length);
 
         // The heading level is the number of '#' in the capture group.
         const headingLevel = openMatch[1].trim().length;
-        const headingContent = this.maybeRemoveClosingSeq_(restContent);
+        const headingContent = this.maybeRemoveClosingSeq(restContent);
 
         // Ignore surrounding whitespace on the remaining heading content.
         return new HeadingNode(headingContent.trim(), headingLevel);
@@ -42,7 +43,6 @@ export default class ATXHeadingDetector implements IProcessor<BlockNode, Heading
   /**
    * Checks if a string contains a valid ATX heading.
    *
-   * @method containsATXHeadingAndTrailingSpace
    * @param  {String} content The string to be checked.
    * @return {boolean} Whether the string contains a valid ATX heading.
    * @private
@@ -56,19 +56,21 @@ export default class ATXHeadingDetector implements IProcessor<BlockNode, Heading
   }
 
   /**
-   * Removes the closing ATX heading sequence from a string if it is a valid sequence.
-   * A valid sequence is any number of unescaped # characters following a space.
+   * Removes the closing ATX heading sequence from a string if it is a valid
+   * sequence. A valid sequence is any number of unescaped # characters
+   * following a space.
    *
-   * @method maybeRemoveClosingSeq_
    * @param  {string} content The content to be inspected.
    * @param  {number} headingLevel The heading level expected for the content.
-   * @return {string} The content after inspection and possible removal of the closing sequence.
+   * @return {string} The content after inspection and possible removal of the
+   *  closing sequence.
    * @private
    */
-  private maybeRemoveClosingSeq_(content: string): string {
+  private maybeRemoveClosingSeq(content: string): string {
     const cleanedContent = content.trim();
 
-    // A valid end sequence must be whitespace followed by at least one # character.
+    // A valid end sequence must be whitespace followed by at least one '#'
+    // character.
     const startIdxOfEndSeq = cleanedContent.lastIndexOf(' #');
     const testEndSeq = cleanedContent.substring(startIdxOfEndSeq + 2);
     const expectedEndSeq = this.generateATXHeadingFromLevel(testEndSeq.length);
@@ -84,8 +86,8 @@ export default class ATXHeadingDetector implements IProcessor<BlockNode, Heading
   /**
    * Generates a valid ATX heading sequence.
    *
-   * @method generateATXHeadingFromLevel
-   * @param  {number} headingLevel The heading level of the sequence to be generated.
+   * @param  {number} headingLevel The heading level of the sequence to be
+   *  generated.
    * @return {string} An ATX heading sequence.
    * @private
    */

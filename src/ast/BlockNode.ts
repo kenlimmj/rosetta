@@ -1,5 +1,11 @@
 import ANode from './ANode';
 
+/**
+ * The types of blocks that can be found in a document.
+ *
+ * @export
+ * @enum {number}
+ */
 export enum BLOCK_TYPE {
   Unknown,
   Container,
@@ -14,7 +20,9 @@ export enum BLOCK_TYPE {
  * @extends {ANode<string>}
  */
 export default class BlockNode extends ANode<string> {
-  constructor(content: string, private blockType: BLOCK_TYPE = BLOCK_TYPE.Unknown,
+  constructor(
+    content: string,
+    private blockType: BLOCK_TYPE = BLOCK_TYPE.Unknown,
     private idx?: number, parent = undefined, children = []) {
     super(content, parent, children);
   }

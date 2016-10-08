@@ -14,7 +14,8 @@ export default class IndentedCodeDetector implements IProcessor<BlockNode, CodeN
   process(node: BlockNode): CodeNode | null {
     const nodeContent = node.getContent();
     if (nodeContent.substring(0, 4).trim().length === 0) {
-      return new CodeNode(nodeContent.substring(4, nodeContent.length), BLOCK_TYPE.Indented);
+      return new CodeNode(
+        nodeContent.substring(4, nodeContent.length), BLOCK_TYPE.Indented);
     } else {
       return null;
     }

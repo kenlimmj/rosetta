@@ -8,7 +8,11 @@ import ANode from './ANode';
  * @extends {ANode<string>}
  */
 export default class HeadingNode extends ANode<string> {
-  constructor(content: string, private level: number, parent = undefined, children = []) {
+  constructor(
+    content: string,
+    private level: number,
+    parent = undefined,
+    children = []) {
     super(content, parent, children);
   }
 

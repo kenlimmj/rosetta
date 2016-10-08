@@ -53,8 +53,8 @@ abstract class ANode<T> implements INode<T> {
   }
 
   /**
-   * Sets the parent node for this node. Setting this value to {@code null} is equivalent to
-   * removing the parent.
+   * Sets the parent node for this node. Setting this value to {@code null} is
+   * equivalent to removing the parent.
    *
    * @param {(INode<any> | undefined)} p The parent node to be set.
    * @returns {this} {@code this}, for chaining.

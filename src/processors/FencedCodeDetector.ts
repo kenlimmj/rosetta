@@ -27,9 +27,11 @@ export default class FencedCodeDetector implements IProcessor<BlockNode, CodeNod
 
         // All characters in the fence must be the same.
         if (fenceString === fenceChar.repeat(fenceString.length)) {
-          // The info string is everything that follows after the end of the code fence.
+          // The info string is everything that follows after the end of the
+          // code fence.
           const infoString =
-            this.checkAndGetInfoString(nodeContent.substring(fenceEnd + 1), fenceChar);
+            this.checkAndGetInfoString(
+              nodeContent.substring(fenceEnd + 1), fenceChar);
 
           if (infoString !== null) {
             return new CodeNode('', BLOCK_TYPE.Fenced, infoString, fenceStart);
@@ -42,14 +44,15 @@ export default class FencedCodeDetector implements IProcessor<BlockNode, CodeNod
   }
 
   /**
-   * Extracts the info string from the provided info string candidate, taking into account the type
-   * of fence character. If the fence character is a backtick, it additionally checks that the info
-   * string does not contain a backtick.
+   * Extracts the info string from the provided info string candidate, taking
+   * into account the type of fence character. If the fence character is a
+   * backtick, it additionally checks that the info string does not contain a
+   * backtick.
    *
-   * @method checkAndGetInfoString
    * @param  {string} candidate The info string candidate.
    * @param  {string} fenceChar The fence character.
-   * @return {string | null} The info string, or null if the backtick check fails.
+   * @return {string | null} The info string, or null if the backtick check
+   *  fails.
    */
   private checkAndGetInfoString(candidate: string, fenceChar?: string): string | null {
     // Trim spaces and extract the first word.

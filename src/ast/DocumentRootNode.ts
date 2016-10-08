@@ -1,7 +1,8 @@
 import ANode from './ANode';
 
 /**
- * The root of a document. This node stores document-wide metadata, and cannot have a parent.
+ * The root of a document. This node stores document-wide metadata, and cannot
+ * have a parent.
  *
  * @export
  * @class DocumentRootNode
